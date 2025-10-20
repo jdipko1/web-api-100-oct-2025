@@ -26,3 +26,5 @@ app.MapControllers(); //uses .net reflection to scan app and read those
 // - call get all vendors async
 
 app.Run();
+
+public partial class Program; //dont make it internal make it public
