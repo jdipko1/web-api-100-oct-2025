@@ -21,16 +21,20 @@ var myBowlingScores = new List<int>()
 };
 
 //No longer need using Systems.Collections.Generic;
+
 //Eliminates need for top level statements
+
 foreach (var score in myBowlingScores)
 {
     Console.WriteLine(score);
+
 }
 
 var george = new Monkey() { Name = "George", Age = 3 };
 var george2 = new Monkey() {Name = "George"};
 var gorilla = new Gorilla("King", 32);
 var updatedKong = gorilla with { Name = "King Kong" };
+
 
 if (george == george2)
 {
