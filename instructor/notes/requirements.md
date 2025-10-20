@@ -30,11 +30,11 @@ POST http://localhost:5282/vendors
 Content-Type: application/json
 
 {
-  "name":"Apple",
+  "name":"Microsoft",
   "pointOfContact": {
     "name": "Hello",
     "Email": "email",
-    "Phone": "44444444"
+    "Phone": "444444444"
   }
 }
 ```
