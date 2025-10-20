@@ -22,6 +22,7 @@ public class CanGetVendorsList
     [Fact]
     public async Task GettingAllVendorsAsync()
     {
+        //start up the api in memory using my program.cs
         var host = await AlbaHost.For<Program>();
         await host.Scenario(api =>
         {

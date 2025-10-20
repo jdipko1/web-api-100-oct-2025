@@ -21,8 +21,22 @@ Vendors have a set of software they provide that we support.
 Resource: `/vendors` - (collection resource)
 
 ```http
-GET http://localhost:1337/vendors
+GET http://localhost:5282/vendors
 Accept: application/json
+```
+
+```http
+POST http://localhost:5282/vendors
+Content-Type: application/json
+
+{
+  "name":"Apple",
+  "pointOfContact": {
+    "name": "Hello",
+    "Email": "email",
+    "Phone": "44444444"
+  }
+}
 ```
 
 Resources have a name, the name is technically a URI in the form of:
@@ -37,9 +51,6 @@ example: `https://api.company.com/software-center/vendors`
 - "Authority" - api.company.com - server, the "origin" 
 - the path - /software-center/vendors - the part we have control over as developers.
 
-
-/tickets - https://ticketmaster.com/tickets
-/tickets - https://cpd.gov/tickets
 
 ## Catalog Items
 
