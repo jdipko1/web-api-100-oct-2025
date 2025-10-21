@@ -14,7 +14,7 @@ public class CanGetVendorsList
     public async Task GivesASuccessStatusCodeAsync()
     {
         var client = new HttpClient();
-        client.BaseAddress = new Uri("http://localhost:5282");
+        client.BaseAddress = new Uri("http://localhost:1337");
         var response = await client.GetAsync("/vendors");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
