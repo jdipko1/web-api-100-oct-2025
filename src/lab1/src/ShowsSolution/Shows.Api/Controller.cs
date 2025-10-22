@@ -1,5 +1,6 @@
 ﻿using Marten;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Utilities;
 using Shows.Api.Entities;
 using Shows.Api.Models;
 
@@ -10,9 +11,20 @@ public class Controller(IDocumentSession session) : ControllerBase
 
     [HttpPost("/api/shows")]
     // public async Task<ActionResult> AddVendorAsync([FromBody] string show)
-    public async Task<ActionResult> AddVendorAsync([FromBody] ShowCreateModel showModel)
+    public async Task<ActionResult> AddVendorAsync(
+        [FromBody] ShowCreateModel showModel 
+        /*, [FromServices] ShowsCreateModelValidator validator*/ )
     {
         //validate stuff
+        /*
+        var validations = await validator.ValidateAsync(showModel);
+
+        if (!validations.IsValid)
+        {
+            return BadRequest();
+        }
+        */
+
         var entity = new ShowEntity
         {
             Id = Guid.NewGuid(),
@@ -37,6 +49,26 @@ public class Controller(IDocumentSession session) : ControllerBase
 
     }
 
+    [HttpGet("api/shows")]
+    public async Task<ActionResult> GetAllShows()
+    {
+        var shows = await session.Query<ShowEntity>()
+                    .OrderBy(v => v.CreatedAt).ToListAsync<ShowEntity>();
+        var response = new CollectionResponseModel<ShowSummaryItem>
+        {
+            Data = [.. shows.Select(v => new ShowSummaryItem
+            {
+                Id = v.Id,
+                Title = v.Title,
+                Description  = v.Description,
+                StreamingService = v.StreamingService,
+                CreatedAt = v.CreatedAt
+            })]
+        };
+
+        return Ok(response);
+    }
+
     [HttpGet("/api/shows/{id:guid}")]
     public async Task<ActionResult> GetVendorByIdAsync(Guid id)
     {
@@ -55,10 +87,15 @@ public class Controller(IDocumentSession session) : ControllerBase
                 CreatedAt = savedShow.CreatedAt,
                 Title = savedShow.Title,
                 Description = savedShow.Description,
-                StreamingService = savedShow.StreamingService      
+                StreamingService = savedShow.StreamingService
             };
             return Ok(response);
         }
+
+        
     }
+
+
+
 
 }

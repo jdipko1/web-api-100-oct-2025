@@ -26,5 +26,22 @@ public class AddingAShow(SystemTestFixture fixture)
         
 
     }
-    
+    [Fact]
+    public async Task AddABadShow()
+    {
+        var response = await _host.Scenario(_ =>
+        {
+            _.Post.Json(new
+            {
+                Name = "2",
+                Description = "2",
+                StreamingService = "HBO Max"
+            }).ToUrl("/api/shows");
+           // _.StatusCodeShouldBe(400);
+        });
+
+
+
+    }
+
 }

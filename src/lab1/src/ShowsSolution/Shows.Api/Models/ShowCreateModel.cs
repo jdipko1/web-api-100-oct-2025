@@ -1,4 +1,5 @@
-﻿namespace Shows.Api.Models;
+﻿using FluentValidation;
+namespace Shows.Api.Models;
 
 public record ShowCreateModel
 {
@@ -6,6 +7,17 @@ public record ShowCreateModel
     public string Description { get; set; } = string.Empty;
     public string StreamingService { get; set; } = string.Empty;
 
+}
+
+public class ShowsCreateModelValidator : AbstractValidator<ShowCreateModel>
+{
+    public ShowsCreateModelValidator()
+    {
+
+        RuleFor(x => x.Title).NotEmpty().MinimumLength(3).MaximumLength(100);
+        RuleFor(x => x.Description).NotEmpty().MinimumLength(10).MaximumLength(500);
+        RuleFor(x => x.StreamingService).NotEmpty();
+    }
 }
 /*
  * public record VendorCreateModel
