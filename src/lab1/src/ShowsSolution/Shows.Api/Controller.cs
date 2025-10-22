@@ -55,7 +55,7 @@ public class Controller(IDocumentSession session) : ControllerBase
     public async Task<ActionResult> GetAllShows()
     {
         var shows = await session.Query<ShowEntity>()
-                    .OrderBy(v => v.CreatedAt).ToListAsync<ShowEntity>();
+                    .OrderByDescending(v => v.CreatedAt).ToListAsync<ShowEntity>();
         var response = new CollectionResponseModel<ShowSummaryItem>
         {
             Data = [.. shows.Select(v => new ShowSummaryItem

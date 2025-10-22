@@ -32,8 +32,8 @@ public class GetAll(SystemTestFixture fixture)
         //Check to make sure dates are in chronological order
         for (int i = 0; i < showsList.Data.Count-1; i++) {
         
-            Assert.True( showsList.Data[i].CreatedAt <= 
-                showsList.Data[i + 1].CreatedAt, 
+            Assert.True( showsList.Data[i].CreatedAt.UtcDateTime >= 
+                showsList.Data[i + 1].CreatedAt.UtcDateTime, 
                 $"Item at index {i} is not less than or equal to item at index {i + 1}");
         }
     }
