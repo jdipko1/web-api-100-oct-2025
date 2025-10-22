@@ -1,10 +1,14 @@
-﻿using FluentValidation;
-using Marten;
+﻿namespace Shows.Api.Models;
 
-namespace SoftwareCenter.Api.Vendors.Models;
+public record ShowCreateModel
+{
+    public string Title { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string StreamingService { get; set; } = string.Empty;
 
-// this represents what we are expecting from the client on the POST /vendors
-public record VendorCreateModel
+}
+/*
+ * public record VendorCreateModel
 {
    
     public string Name { get; set; } = string.Empty;
@@ -21,3 +25,4 @@ public class VendorCreateModelValidator : AbstractValidator<VendorCreateModel>
         RuleFor(x => x.PointOfContact).NotNull().SetValidator(validator: new VendorPointOfContactValidator());
     }
 }
+*/
