@@ -1,6 +1,6 @@
 ﻿
 using Alba;
-using SoftwareCenter.Api.Vendors;
+using SoftwareCenter.Api.Vendors.Models;
 
 namespace SoftwareCenter.Tests.Vendors;
 public class CanAddAVendor
@@ -32,7 +32,7 @@ public class CanAddAVendor
 
         Assert.NotNull(postEntityReturned);
 
-        Assert.True(postEntityReturned.Id != Guid.Empty);
+        Assert.True(postEntityReturned.Id != Guid.Empty); 
         Assert.Equal(postEntityReturned.Name, vendorToAdd.Name);
         Assert.Equal(postEntityReturned.PointOfContact, vendorToAdd.PointOfContact);
 
@@ -48,7 +48,7 @@ public class CanAddAVendor
         Assert.NotNull(getEntityReturned);
         Assert.Equal(postEntityReturned, getEntityReturned);
     }
-    // adding a vendor returns a success status code (probably a 201)
+   // adding a vendor returns a success status code (probably a 201)
 
     // adding a vendor saves it to the database, and we can verify that.
 

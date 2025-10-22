@@ -1,5 +1,7 @@
 
 using Marten;
+using SoftwareCenter.Api.Vendors;
+using SoftwareCenter.Api.Vendors.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,7 @@ builder.Services.AddOpenApi();
 
 // ask my environment for the connection string to my database
 
-var connectionString = builder.Configuration.GetConnectionString("software") ??
+var connectionString = builder.Configuration.GetConnectionString("software") ?? 
     throw new Exception("No software connection string found!");
 
 
@@ -35,6 +37,11 @@ builder.Services.AddMarten(config =>
 // IDocumentSession
 
 
+// AddScoped = One Per HttpRequest
+//builder.Services.AddScoped<VendorCreateModelValidator>();
+builder.Services.AddVendorServices();
+
+
 var app = builder.Build();
 // after this line is configuring the HTTP "middleware" - how are actual requests and responses 
 // generated.
@@ -42,7 +49,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi(); 
 }
 
 app.UseAuthorization();

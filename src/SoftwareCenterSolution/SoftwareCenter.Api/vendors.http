@@ -1,19 +1,4 @@
-@SoftwareCenter.Api_HostAddress = http://localhost:1337
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
 
-GET {{SoftwareCenter.Api_HostAddress}}/vendors/
-Accept: application/json
 
-###
-POST {{SoftwareCenter.Api_HostAddress}}/vendors/
-Content-Type: application/json
-
-{
-    "name": "Someone's Name",
-    "email": "someone@email.com",
-    "pointOfContact" :
-    {
-        "name": "A POC",
-        "email": "POC@POC.com",
-        "phone": "444-555-6666"
-    }
-}
+GET http://localhost:1337/vendors
