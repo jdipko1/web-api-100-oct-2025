@@ -19,7 +19,7 @@ builder.Services.AddMarten(config =>
 
 }).UseLightweightSessions();
 
-builder.Services.AddShowServices();
+builder.Services.AddShowServices();  //I needed to add this for FluentValidation to work
 
 var app = builder.Build();
 

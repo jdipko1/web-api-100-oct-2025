@@ -23,8 +23,13 @@ public class GetAll(SystemTestFixture fixture)
                     api.StatusCodeShouldBeOk();
 
                 });
+
+        //Need to check if there is anything in the database
+        //Might fail if nothing is in the database.
+
         var showsList = getResponse.ReadAsJson<CollectionResponseModel<ShowSummaryItem>>(); 
 
+        //Check to make sure dates are in chronological order
         for (int i = 0; i < showsList.Data.Count-1; i++) {
         
             Assert.True( showsList.Data[i].CreatedAt <= 
