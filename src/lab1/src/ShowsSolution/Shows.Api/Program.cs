@@ -1,4 +1,5 @@
 using Marten;
+using Shows.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddMarten(config =>
     config.Connection(connectionString);
 
 }).UseLightweightSessions();
+
+builder.Services.AddShowServices();
 
 var app = builder.Build();
 

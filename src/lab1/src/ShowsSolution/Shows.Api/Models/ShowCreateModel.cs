@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Marten;
 namespace Shows.Api.Models;
 
 public record ShowCreateModel

@@ -11,19 +11,21 @@ public class Controller(IDocumentSession session) : ControllerBase
 
     [HttpPost("/api/shows")]
     // public async Task<ActionResult> AddVendorAsync([FromBody] string show)
-    public async Task<ActionResult> AddVendorAsync(
+    public async Task<ActionResult> AddShowAsync(
         [FromBody] ShowCreateModel showModel 
-        /*, [FromServices] ShowsCreateModelValidator validator*/ )
+        , [FromServices] ShowsCreateModelValidator validator )
     {
         //validate stuff
-        /*
+        
+        
         var validations = await validator.ValidateAsync(showModel);
 
         if (!validations.IsValid)
         {
             return BadRequest();
         }
-        */
+       
+       
 
         var entity = new ShowEntity
         {

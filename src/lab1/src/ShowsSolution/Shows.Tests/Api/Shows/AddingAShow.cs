@@ -16,9 +16,10 @@ public class AddingAShow(SystemTestFixture fixture)
         {
             _.Post.Json(new
             {
-                Name = "Test Show",
-                Description = "This is a test show",
-                StreamingService = "HBO Max"
+                
+                Title = "Test Show Woop Woop Woop",
+                Description = "This is a test show hello hello",
+                StreamingService = "HBO Max  YEEEEEEEEEEEEEEHEEEEEEE"
             }).ToUrl("/api/shows");
             _.StatusCodeShouldBeOk();
         });
@@ -37,7 +38,7 @@ public class AddingAShow(SystemTestFixture fixture)
                 Description = "2",
                 StreamingService = "HBO Max"
             }).ToUrl("/api/shows");
-           // _.StatusCodeShouldBe(400);
+            _.StatusCodeShouldBe(400);
         });
 
 
